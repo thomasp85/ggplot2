@@ -118,6 +118,9 @@ Stat <- ggproto("Stat",
     stop("Not implemented", call. = FALSE)
   },
 
+  finish_data = function(data, params) {
+    data
+  },
 
   # See discussion at Geom$parameters()
   extra_params = "na.rm",
