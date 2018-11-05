@@ -30,11 +30,27 @@ list_2_df <- function(data, .check = FALSE) {
   } else {
     n_row <- if (length(data) == 0) 0 else length(data[[1]])
   }
-  structure(data, class = "data.frame", row.names = c(NA_integer_, -n_row))
+  class(data) <- 'data.frame'
+  attr(data, 'row.names') <- c(NA_integer_, -n_row)
+  data
 }
 mat_2_df <- function(data, .check = FALSE) {
   c_names <- colnames(data)
   data <- split(data, rep(seq_len(ncol(data))), each = nrow(data))
   names(data) <- c_names
   list_2_df(data, .check)
+}
+
+# More performant modifyList
+modify_list <- function(old, new, keep_null = FALSE) {
+  if (keep_null) {
+    for (i in names(new)) {
+      old[i] <- list(new[[i]])
+    }
+  } else {
+    for (i in names(new)) {
+      old[[i]] <- new[[i]]
+    }
+  }
+  old
 }
