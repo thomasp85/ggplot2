@@ -202,10 +202,12 @@ guide_train.legend <- function(guide, scale, aesthetic = NULL) {
     return()
   }
 
-  key <- as.data.frame(
-    setNames(list(scale$map(breaks)), aesthetic %||% scale$aesthetics[1]),
-    stringsAsFactors = FALSE
-  )
+  # in the key data frame, use either the aesthetic provided as
+  # argument to this function or, as a fall back, the first in the vector
+  # of possible aesthetics handled by the scale
+  aes_column_name <- aesthetic %||% scale$aesthetics[1]
+  # need to make a tibble here in case the scale returns a list column
+  key <- tibble(!!aes_column_name := scale$map(breaks))
   key$.label <- scale$get_labels(breaks)
 
   # Drop out-of-range values for continuous scale
@@ -441,13 +443,12 @@ guide_gengrob.legend <- function(guide, theme) {
   )
 
   if (guide$byrow) {
-    vps <- data.frame(
+    vps <- new_data_frame(list(
       R = ceiling(seq(nbreak) / legend.ncol),
       C = (seq(nbreak) - 1) %% legend.ncol + 1
-    )
+    ))
   } else {
-    vps <- as.data.frame(arrayInd(seq(nbreak), dim(key_sizes)))
-    names(vps) <- c("R", "C")
+    vps <- mat_2_df(arrayInd(seq(nbreak), dim(key_sizes)), c("R", "C"))
   }
 
   # layout of key-label depends on the direction of the guide

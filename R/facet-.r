@@ -443,7 +443,7 @@ eval_facet <- function(facet, data, env = emptyenv()) {
 
 layout_null <- function() {
   # PANEL needs to be a factor to be consistent with other facet types
-  new_data_frame(PANEL = factor(1), ROW = 1, COL = 1, SCALE_X = 1, SCALE_Y = 1)
+  new_data_frame(list(PANEL = factor(1), ROW = 1, COL = 1, SCALE_X = 1, SCALE_Y = 1))
 }
 
 check_layout <- function(x) {
@@ -493,12 +493,12 @@ find_panel <- function(table) {
   layout <- table$layout
   panels <- layout[grepl("^panel", layout$name), , drop = FALSE]
 
-  new_data_frame(
-    t = min(panels$t),
-    r = max(panels$r),
-    b = max(panels$b),
-    l = min(panels$l)
-  )
+  new_data_frame(list(
+    t = min(.subset2(panels, "t")),
+    r = max(.subset2(panels, "r")),
+    b = max(.subset2(panels, "b")),
+    l = min(.subset2(panels, "l"))
+  ))
 }
 #' @rdname find_panel
 #' @export
