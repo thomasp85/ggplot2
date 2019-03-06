@@ -30,12 +30,13 @@ Layout <- ggproto("Layout", NULL,
   panel_scales_y = NULL,
   panel_params = NULL,
 
-  setup = function(self, data, plot_data = new_data_frame(), plot_env = emptyenv()) {
+  setup = function(self, data, plot_data = new_data_frame(), plot_env = emptyenv(), layers) {
     data <- c(list(plot_data), data)
 
     # Setup facets
     self$facet_params <- self$facet$setup_params(data, self$facet$params)
     self$facet_params$plot_env <- plot_env
+    self$facet_params$fixed_layers <- lapply(layers, `[[`, "fixed")
     data <- self$facet$setup_data(data, self$facet_params)
 
     # Setup coords

@@ -141,6 +141,14 @@ FacetWrap <- ggproto("FacetWrap", Facet,
       return(layout_null())
     }
 
+    data[-1] <- Map(function(d, fix) {
+      if (is_fixed_layer(fix, 'panel')) {
+        new_data_frame(n = 0)
+      } else {
+        d
+      }
+    }, d = data[-1], fix = params$fixed_layers)
+
     base <- unrowname(
       combine_vars(data, params$plot_env, vars, drop = params$drop)
     )
@@ -174,6 +182,7 @@ FacetWrap <- ggproto("FacetWrap", Facet,
     panels
   },
   map_data = function(data, layout, params) {
+    browser()
     if (empty(data)) {
       return(cbind(data, PANEL = integer(0)))
     }

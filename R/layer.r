@@ -173,6 +173,7 @@ Layer <- ggproto("Layer", NULL,
   mapping = NULL,
   position = NULL,
   inherit.aes = FALSE,
+  fixed = FALSE,
 
   print = function(self) {
     if (!is.null(self$mapping)) {
@@ -338,7 +339,9 @@ Layer <- ggproto("Layer", NULL,
 
 is.layer <- function(x) inherits(x, "Layer")
 
-
+is_fixed_layer = function(type = NULL, fix) {
+  isTRUE(fix) || any(type %in% fix)
+}
 
 check_subclass <- function(x, subclass,
                            argname = to_lower_ascii(subclass),
