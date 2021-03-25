@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
@@ -79,9 +83,15 @@ are a stacked bar chart in polar coordinates." />
   gtag('config', 'UA-115082821-1');
 </script>
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -98,80 +108,19 @@ are a stacked bar chart in polar coordinates." />
         <a class="navbar-brand" href="../index.html">ggplot2</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.3.9000</span>
         </div>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://www.tidyverse.org/blog/2020/03/ggplot2-3-3-0/">Version 3.3.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2019/06/ggplot2-3-2-0/">Version 3.2.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/10/ggplot2-3-1-0/">Version 3.1.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">Version 3.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/11/14/ggplot2-2-2-0/">Version 2.2.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/03/03/ggplot2-2-1-0/">Version 2.1.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/12/21/ggplot2-2-0-0/">Version 2.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/01/09/ggplot2-updates/">Version 1.0.0</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="../news/index.html">Changelog</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/extending-ggplot2.html">Extending ggplot2</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-in-packages.html">Using ggplot2 in packages</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-specs.html">Aesthetic specifications</a>
-    </li>
-    <li>
-      <a href="../articles/profiling.html">Profiling Performance</a>
-    </li>
-  </ul>
-</li>
+        
         <li>
   <a href="https://exts.ggplot2.tidyverse.org/gallery/">Extensions</a>
 </li>
 <li>
   <a href="https://github.com/tidyverse/ggplot2/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -204,7 +153,7 @@ are a stacked bar chart in polar coordinates." />
 are a stacked bar chart in polar coordinates.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>coord_polar</span>(<span class='kw'>theta</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>direction</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='st'>"on"</span>)</pre>
+    <pre class="usage"><span class='fu'>coord_polar</span><span class='op'>(</span>theta <span class='op'>=</span> <span class='st'>"x"</span>, start <span class='op'>=</span> <span class='fl'>0</span>, direction <span class='op'>=</span> <span class='fl'>1</span>, clip <span class='op'>=</span> <span class='st'>"on"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,7 +164,8 @@ are a stacked bar chart in polar coordinates.</p>
     </tr>
     <tr>
       <th>start</th>
-      <td><p>offset of starting point from 12 o'clock in radians</p></td>
+      <td><p>Offset of starting point from 12 o'clock in radians. Offset
+is applied clockwise or anticlockwise depending on value of <code>direction</code>.</p></td>
     </tr>
     <tr>
       <th>direction</th>
@@ -237,40 +187,47 @@ means no. For details, please see <code><a href='coord_cartesian.html'>coord_car
 <span class='co'># grammar.  Use with EXTREME caution.</span>
 
 <span class='co'>#' # A pie chart = stacked bar chart + polar coordinates</span>
-<span class='no'>pie</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fl'>1</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>cyl</span>))) +
- <span class='fu'><a href='geom_bar.html'>geom_bar</a></span>(<span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>pie</span> + <span class='fu'>coord_polar</span>(<span class='kw'>theta</span> <span class='kw'>=</span> <span class='st'>"y"</span>)</div><div class='img'><img src='coord_polar-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>pie</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+ <span class='fu'><a href='geom_bar.html'>geom_bar</a></span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>pie</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span>theta <span class='op'>=</span> <span class='st'>"y"</span><span class='op'>)</span>
+</div><div class='img'><img src='coord_polar-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># \donttest{</span>
 
 <span class='co'># A coxcomb plot = bar chart + polar coordinates</span>
-<span class='no'>cxc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='no'>cyl</span>))) +
-  <span class='fu'><a href='geom_bar.html'>geom_bar</a></span>(<span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>colour</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
-<span class='no'>cxc</span> + <span class='fu'>coord_polar</span>()</div><div class='img'><img src='coord_polar-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># A new type of plot?</span>
-<span class='no'>cxc</span> + <span class='fu'>coord_polar</span>(<span class='kw'>theta</span> <span class='kw'>=</span> <span class='st'>"y"</span>)</div><div class='img'><img src='coord_polar-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>cxc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='geom_bar.html'>geom_bar</a></span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span>, colour <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
+<span class='va'>cxc</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='coord_polar-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># A new type of plot?</span>
+<span class='va'>cxc</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span>theta <span class='op'>=</span> <span class='st'>"y"</span><span class='op'>)</span>
+</div><div class='img'><img src='coord_polar-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># The bullseye chart</span>
-<span class='no'>pie</span> + <span class='fu'>coord_polar</span>()</div><div class='img'><img src='coord_polar-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>pie</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='coord_polar-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Hadley's favourite pie chart</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>variable</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"does not resemble"</span>, <span class='st'>"resembles"</span>),
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>, <span class='fl'>80</span>)
-)
-<span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>df</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>value</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>variable</span>)) +
-  <span class='fu'><a href='geom_bar.html'>geom_col</a></span>(<span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-  <span class='fu'><a href='scale_manual.html'>scale_fill_manual</a></span>(<span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"yellow"</span>)) +
-  <span class='fu'>coord_polar</span>(<span class='st'>"y"</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='no'>pi</span> / <span class='fl'>3</span>) +
-  <span class='fu'><a href='labs.html'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Pac man"</span>)</div><div class='img'><img src='coord_polar-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  variable <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"does not resemble"</span>, <span class='st'>"resembles"</span><span class='op'>)</span>,
+  value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>80</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='va'>value</span>, fill <span class='op'>=</span> <span class='va'>variable</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='geom_bar.html'>geom_col</a></span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"yellow"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>coord_polar</span><span class='op'>(</span><span class='st'>"y"</span>, start <span class='op'>=</span> <span class='va'>pi</span> <span class='op'>/</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Pac man"</span><span class='op'>)</span>
+</div><div class='img'><img src='coord_polar-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Windrose + doughnut plot</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"ggplot2movies"</span>)) {
-<span class='no'>movies</span>$<span class='no'>rrating</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cut_interval.html'>cut_interval</a></span>(<span class='no'>movies</span>$<span class='no'>rating</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>movies</span>$<span class='no'>budgetq</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='cut_interval.html'>cut_number</a></span>(<span class='no'>movies</span>$<span class='no'>budget</span>, <span class='fl'>4</span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'>"ggplot2movies"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>movies</span><span class='op'>$</span><span class='va'>rrating</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cut_interval.html'>cut_interval</a></span><span class='op'>(</span><span class='va'>movies</span><span class='op'>$</span><span class='va'>rating</span>, length <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>movies</span><span class='op'>$</span><span class='va'>budgetq</span> <span class='op'>&lt;-</span> <span class='fu'><a href='cut_interval.html'>cut_number</a></span><span class='op'>(</span><span class='va'>movies</span><span class='op'>$</span><span class='va'>budget</span>, <span class='fl'>4</span><span class='op'>)</span>
 
-<span class='no'>doh</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>movies</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>rrating</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>budgetq</span>))
+<span class='va'>doh</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>movies</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>rrating</span>, fill <span class='op'>=</span> <span class='va'>budgetq</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Wind rose</span>
-<span class='no'>doh</span> + <span class='fu'><a href='geom_bar.html'>geom_bar</a></span>(<span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>1</span>) + <span class='fu'>coord_polar</span>()
+<span class='va'>doh</span> <span class='op'>+</span> <span class='fu'><a href='geom_bar.html'>geom_bar</a></span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Race track plot</span>
-<span class='no'>doh</span> + <span class='fu'><a href='geom_bar.html'>geom_bar</a></span>(<span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>0.9</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"fill"</span>) + <span class='fu'>coord_polar</span>(<span class='kw'>theta</span> <span class='kw'>=</span> <span class='st'>"y"</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2movies</span></div><div class='img'><img src='coord_polar-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span></div></pre>
+<span class='va'>doh</span> <span class='op'>+</span> <span class='fu'><a href='geom_bar.html'>geom_bar</a></span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>0.9</span>, position <span class='op'>=</span> <span class='st'>"fill"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>coord_polar</span><span class='op'>(</span>theta <span class='op'>=</span> <span class='st'>"y"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2movies</span></div><div class='img'><img src='coord_polar-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -282,12 +239,12 @@ means no. For details, please see <code><a href='coord_cartesian.html'>coord_car
 
       <footer>
       <div class="tidyverse">
-  <p>ggplot2 is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://github.com/wch" class="external-link">Winston Chang</a>, <a href="https://github.com/lionel-" class="external-link">Lionel Henry</a>, <a href="https://data-imaginist.com" class="external-link">Thomas Lin Pedersen</a>, Kohske Takahashi, <a href="https://clauswilke.com" class="external-link">Claus Wilke</a>, <a href="https://karawoo.com" class="external-link">Kara Woo</a>, <a href="https://yutani.rbind.io" class="external-link">Hiroaki Yutani</a>, <a href="https://fishandwhistle.net" class="external-link">Dewey Dunnington</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>,<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
 <div class="author">
   <p>
-    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.
+    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
@@ -314,6 +271,8 @@ means no. For details, please see <code><a href='coord_cartesian.html'>coord_car
 </script>
 
 
+
+  
 
   </body>
 </html>

@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
@@ -52,12 +56,12 @@
 
 
 <meta property="og:title" content="Scales for shapes, aka glyphs — scale_shape" />
-<meta property="og:description" content="scale_shape maps discrete variables to six easily discernible shapes.
+<meta property="og:description" content="scale_shape() maps discrete variables to six easily discernible shapes.
 If you have more than six levels, you will get a warning message, and the
-seventh and subsequence levels will not appear on the plot. Use
+seventh and subsequent levels will not appear on the plot. Use
 scale_shape_manual() to supply your own values. You can not map
 a continuous variable to shape unless scale_shape_binned() is used. Still,
-as shape has no inherent order, this use is not advised.." />
+as shape has no inherent order, this use is not advised." />
 <meta property="og:image" content="https://ggplot2.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -83,9 +87,15 @@ as shape has no inherent order, this use is not advised.." />
   gtag('config', 'UA-115082821-1');
 </script>
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -102,80 +112,19 @@ as shape has no inherent order, this use is not advised.." />
         <a class="navbar-brand" href="../index.html">ggplot2</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.3.9000</span>
         </div>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://www.tidyverse.org/blog/2020/03/ggplot2-3-3-0/">Version 3.3.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2019/06/ggplot2-3-2-0/">Version 3.2.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/10/ggplot2-3-1-0/">Version 3.1.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">Version 3.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/11/14/ggplot2-2-2-0/">Version 2.2.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/03/03/ggplot2-2-1-0/">Version 2.1.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/12/21/ggplot2-2-0-0/">Version 2.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/01/09/ggplot2-updates/">Version 1.0.0</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="../news/index.html">Changelog</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/extending-ggplot2.html">Extending ggplot2</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-in-packages.html">Using ggplot2 in packages</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-specs.html">Aesthetic specifications</a>
-    </li>
-    <li>
-      <a href="../articles/profiling.html">Profiling Performance</a>
-    </li>
-  </ul>
-</li>
+        
         <li>
   <a href="https://exts.ggplot2.tidyverse.org/gallery/">Extensions</a>
 </li>
 <li>
   <a href="https://github.com/tidyverse/ggplot2/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -204,17 +153,17 @@ as shape has no inherent order, this use is not advised.." />
     </div>
 
     <div class="ref-description">
-    <p><code>scale_shape</code> maps discrete variables to six easily discernible shapes.
+    <p><code>scale_shape()</code> maps discrete variables to six easily discernible shapes.
 If you have more than six levels, you will get a warning message, and the
-seventh and subsequence levels will not appear on the plot. Use
+seventh and subsequent levels will not appear on the plot. Use
 <code><a href='scale_manual.html'>scale_shape_manual()</a></code> to supply your own values. You can not map
 a continuous variable to shape unless <code>scale_shape_binned()</code> is used. Still,
-as shape has no inherent order, this use is not advised..</p>
+as shape has no inherent order, this use is not advised.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scale_shape</span>(<span class='no'>...</span>, <span class='kw'>solid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>scale_shape</span><span class='op'>(</span><span class='va'>...</span>, solid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>scale_shape_binned</span>(<span class='no'>...</span>, <span class='kw'>solid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>scale_shape_binned</span><span class='op'>(</span><span class='va'>...</span>, solid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -233,8 +182,14 @@ they should take (e.g., <code><a href='https://scales.r-lib.org//reference/hue_p
 <li><p>A function that takes the limits as input and returns breaks
 as output</p></li>
 </ul></p></dd>
-    <dt><code>limits</code></dt><dd><p>A character vector that defines possible values of the scale
-and their order.</p></dd>
+    <dt><code>limits</code></dt><dd><p>One of:
+<ul>
+<li><p><code>NULL</code> to use the default scale values</p></li>
+<li><p>A character vector that defines possible values of the scale and their
+order</p></li>
+<li><p>A function that accepts the existing (automatic) values and returns
+new ones</p></li>
+</ul></p></dd>
     <dt><code>drop</code></dt><dd><p>Should unused factor levels be omitted from the scale?
 The default, <code>TRUE</code>, uses the levels that appear in the data;
 <code>FALSE</code> uses all the levels in the factor.</p></dd>
@@ -275,22 +230,28 @@ as output</p></li>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dsmall</span> <span class='kw'>&lt;-</span> <span class='no'>diamonds</span>[<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>diamonds</span>), <span class='fl'>100</span>), ]
+    <pre class="examples"><div class='input'><span class='va'>dsmall</span> <span class='op'>&lt;-</span> <span class='va'>diamonds</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>diamonds</span><span class='op'>)</span>, <span class='fl'>100</span><span class='op'>)</span>, <span class='op'>]</span>
 
-(<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>dsmall</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='no'>carat</span>, <span class='no'>price</span>)) + <span class='fu'><a href='geom_point.html'>geom_point</a></span>(<span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>cut</span>)))</div><div class='output co'>#&gt; <span class='warning'>Warning: Using shapes for an ordinal variable is not advised</span></div><div class='img'><img src='scale_shape-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>d</span> + <span class='fu'>scale_shape</span>(<span class='kw'>solid</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># the default</span></div><div class='img'><img src='scale_shape-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>d</span> + <span class='fu'>scale_shape</span>(<span class='kw'>solid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='scale_shape-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>d</span> + <span class='fu'>scale_shape</span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Cut of diamond"</span>)</div><div class='img'><img src='scale_shape-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='op'>(</span><span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>dsmall</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span><span class='va'>carat</span>, <span class='va'>price</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='va'>cut</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Using shapes for an ordinal variable is not advised</span></div><div class='img'><img src='scale_shape-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>d</span> <span class='op'>+</span> <span class='fu'>scale_shape</span><span class='op'>(</span>solid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='co'># the default</span>
+</div><div class='img'><img src='scale_shape-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>d</span> <span class='op'>+</span> <span class='fu'>scale_shape</span><span class='op'>(</span>solid <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='img'><img src='scale_shape-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>d</span> <span class='op'>+</span> <span class='fu'>scale_shape</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Cut of diamond"</span><span class='op'>)</span>
+</div><div class='img'><img src='scale_shape-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># To change order of levels, change order of</span>
 <span class='co'># underlying factor</span>
-<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span>(<span class='no'>dsmall</span>$<span class='no'>cut</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Fair"</span>, <span class='st'>"Good"</span>, <span class='st'>"Very Good"</span>, <span class='st'>"Premium"</span>, <span class='st'>"Ideal"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>dsmall</span><span class='op'>$</span><span class='va'>cut</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Fair"</span>, <span class='st'>"Good"</span>, <span class='st'>"Very Good"</span>, <span class='st'>"Premium"</span>, <span class='st'>"Ideal"</span><span class='op'>)</span>
 
 <span class='co'># Need to recreate plot to pick up new data</span>
-<span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>dsmall</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='no'>price</span>, <span class='no'>carat</span>)) + <span class='fu'><a href='geom_point.html'>geom_point</a></span>(<span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>cut</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Using shapes for an ordinal variable is not advised</span></div><div class='img'><img src='scale_shape-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>dsmall</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span><span class='va'>price</span>, <span class='va'>carat</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='va'>cut</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Using shapes for an ordinal variable is not advised</span></div><div class='img'><img src='scale_shape-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Show a list of available shapes</span>
-<span class='no'>df_shapes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>0</span>:<span class='fl'>24</span>)
-<span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>df_shapes</span>, <span class='fu'><a href='aes.html'>aes</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>shape</span>)) +
-  <span class='fu'><a href='geom_point.html'>geom_point</a></span>(<span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>shape</span> <span class='kw'>=</span> <span class='no'>shape</span>), <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>'red'</span>) +
-  <span class='fu'><a href='scale_identity.html'>scale_shape_identity</a></span>() +
-  <span class='fu'><a href='facet_wrap.html'>facet_wrap</a></span>(~<span class='no'>shape</span>) +
-  <span class='fu'><a href='ggtheme.html'>theme_void</a></span>()</div><div class='img'><img src='scale_shape-6.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>df_shapes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>24</span><span class='op'>)</span>
+<span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df_shapes</span>, <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, shape <span class='op'>=</span> <span class='va'>shape</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>shape <span class='op'>=</span> <span class='va'>shape</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>5</span>, fill <span class='op'>=</span> <span class='st'>'red'</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='scale_identity.html'>scale_shape_identity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>shape</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='scale_shape-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -302,12 +263,12 @@ as output</p></li>
 
       <footer>
       <div class="tidyverse">
-  <p>ggplot2 is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://github.com/wch" class="external-link">Winston Chang</a>, <a href="https://github.com/lionel-" class="external-link">Lionel Henry</a>, <a href="https://data-imaginist.com" class="external-link">Thomas Lin Pedersen</a>, Kohske Takahashi, <a href="https://clauswilke.com" class="external-link">Claus Wilke</a>, <a href="https://karawoo.com" class="external-link">Kara Woo</a>, <a href="https://yutani.rbind.io" class="external-link">Hiroaki Yutani</a>, <a href="https://fishandwhistle.net" class="external-link">Dewey Dunnington</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>,<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
 <div class="author">
   <p>
-    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.
+    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
@@ -334,6 +295,8 @@ as output</p></li>
 </script>
 
 
+
+  
 
   </body>
 </html>

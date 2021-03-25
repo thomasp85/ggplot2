@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
@@ -57,19 +61,34 @@
 sym() creates a symbol from a string and
 syms() creates a list of symbols from a
 character vector.
-expr() and quo() quote
-one expression. quo() wraps the quoted expression in a quosure.
-The plural variants exprs() and
-quos() return a list of quoted expressions or
-quosures.
-enexpr() and enquo()
-capture the expression supplied as argument by the user of the
-current function (enquo() wraps this expression in a quosure).
-enexprs() and enquos()
-capture multiple expressions supplied as arguments, including
-....
+enquo() and
+enquos() delay the execution of one or
+several function arguments. enquo() returns a single quoted
+expression, which is like a blueprint for the delayed computation.
+enquos() returns a list of such quoted expressions.
+expr() quotes a new expression locally. It
+is mostly useful to build new expressions around arguments
+captured with enquo() or enquos():
+expr(mean(!!enquo(arg), na.rm = TRUE)).
+as_name() transforms a quoted variable name
+into a string. Supplying something else than a quoted variable
+name is an error.
+That's unlike as_label() which also returns
+a single string but supports any kind of R object as input,
+including quoted function calls and vectors. Its purpose is to
+summarise that object into a single label. That label is often
+suitable as a default name.
+If you don't know what a quoted expression contains (for instance
+expressions captured with enquo() could be a variable
+name, a call to a function, or an unquoted constant), then use
+as_label(). If you know you have quoted a simple variable
+name, or would like to enforce this, use as_name().
 
-" />
+
+To learn more about tidy eval and how to use these tools, visit
+https://tidyeval.tidyverse.org and the
+Metaprogramming
+section of Advanced R." />
 <meta property="og:image" content="https://ggplot2.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -95,9 +114,15 @@ capture multiple expressions supplied as arguments, including
   gtag('config', 'UA-115082821-1');
 </script>
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -114,80 +139,19 @@ capture multiple expressions supplied as arguments, including
         <a class="navbar-brand" href="../index.html">ggplot2</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.3.9000</span>
         </div>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://www.tidyverse.org/blog/2020/03/ggplot2-3-3-0/">Version 3.3.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2019/06/ggplot2-3-2-0/">Version 3.2.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/10/ggplot2-3-1-0/">Version 3.1.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">Version 3.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/11/14/ggplot2-2-2-0/">Version 2.2.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/03/03/ggplot2-2-1-0/">Version 2.1.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/12/21/ggplot2-2-0-0/">Version 2.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/01/09/ggplot2-updates/">Version 1.0.0</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="../news/index.html">Changelog</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/extending-ggplot2.html">Extending ggplot2</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-in-packages.html">Using ggplot2 in packages</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-specs.html">Aesthetic specifications</a>
-    </li>
-    <li>
-      <a href="../articles/profiling.html">Profiling Performance</a>
-    </li>
-  </ul>
-</li>
+        
         <li>
   <a href="https://exts.ggplot2.tidyverse.org/gallery/">Extensions</a>
 </li>
 <li>
   <a href="https://github.com/tidyverse/ggplot2/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -221,19 +185,34 @@ capture multiple expressions supplied as arguments, including
 <li><p><code><a href='https://rlang.r-lib.org/reference/sym.html'>sym</a>()</code> creates a symbol from a string and
 <code><a href='https://rlang.r-lib.org/reference/sym.html'>syms</a>()</code> creates a list of symbols from a
 character vector.</p></li>
-<li><p><code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>expr</a>()</code> and <code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quo</a>()</code> quote
-one expression. <code>quo()</code> wraps the quoted expression in a quosure.</p>
-<p>The plural variants <code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>exprs</a>()</code> and
-<code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>quos</a>()</code> return a list of quoted expressions or
-quosures.</p></li>
-<li><p><code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enexpr</a>()</code> and <code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enquo</a>()</code>
-capture the expression supplied as argument by the user of the
-current function (<code>enquo()</code> wraps this expression in a quosure).</p>
-<p><code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enexprs</a>()</code> and <code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enquos</a>()</code>
-capture multiple expressions supplied as arguments, including
-<code>...</code>.</p></li>
+<li><p><code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enquo</a>()</code> and
+<code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>enquos</a>()</code> delay the execution of one or
+several function arguments. <code>enquo()</code> returns a single quoted
+expression, which is like a blueprint for the delayed computation.
+<code>enquos()</code> returns a list of such quoted expressions.</p></li>
+<li><p><code><a href='https://rlang.r-lib.org/reference/nse-defuse.html'>expr</a>()</code> quotes a new expression <em>locally</em>. It
+is mostly useful to build new expressions around arguments
+captured with <code>enquo()</code> or <code>enquos()</code>:
+<code>expr(mean(!!enquo(arg), na.rm = TRUE))</code>.</p></li>
+<li><p><code><a href='https://rlang.r-lib.org/reference/as_name.html'>as_name</a>()</code> transforms a quoted variable name
+into a string. Supplying something else than a quoted variable
+name is an error.</p>
+<p>That's unlike <code><a href='https://rlang.r-lib.org/reference/as_label.html'>as_label</a>()</code> which also returns
+a single string but supports any kind of R object as input,
+including quoted function calls and vectors. Its purpose is to
+summarise that object into a single label. That label is often
+suitable as a default name.</p>
+<p>If you don't know what a quoted expression contains (for instance
+expressions captured with <code>enquo()</code> could be a variable
+name, a call to a function, or an unquoted constant), then use
+<code>as_label()</code>. If you know you have quoted a simple variable
+name, or would like to enforce this, use <code>as_name()</code>.</p></li>
 </ul>
 
+<p>To learn more about tidy eval and how to use these tools, visit
+<a href='https://tidyeval.tidyverse.org'>https://tidyeval.tidyverse.org</a> and the
+<a href='https://adv-r.hadley.nz/metaprogramming.html'>Metaprogramming
+section</a> of <a href='https://adv-r.hadley.nz'>Advanced R</a>.</p>
     </div>
 
 
@@ -250,12 +229,12 @@ capture multiple expressions supplied as arguments, including
 
       <footer>
       <div class="tidyverse">
-  <p>ggplot2 is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://github.com/wch" class="external-link">Winston Chang</a>, <a href="https://github.com/lionel-" class="external-link">Lionel Henry</a>, <a href="https://data-imaginist.com" class="external-link">Thomas Lin Pedersen</a>, Kohske Takahashi, <a href="https://clauswilke.com" class="external-link">Claus Wilke</a>, <a href="https://karawoo.com" class="external-link">Kara Woo</a>, <a href="https://yutani.rbind.io" class="external-link">Hiroaki Yutani</a>, <a href="https://fishandwhistle.net" class="external-link">Dewey Dunnington</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>,<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
 <div class="author">
   <p>
-    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.
+    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
@@ -282,6 +261,8 @@ capture multiple expressions supplied as arguments, including
 </script>
 
 
+
+  
 
   </body>
 </html>

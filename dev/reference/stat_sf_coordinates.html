@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
@@ -81,9 +85,15 @@ geom_sf_text() and geom_sf_label() relies on this)." />
   gtag('config', 'UA-115082821-1');
 </script>
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -100,80 +110,19 @@ geom_sf_text() and geom_sf_label() relies on this)." />
         <a class="navbar-brand" href="../index.html">ggplot2</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.0.9000</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">3.3.3.9000</span>
         </div>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    News
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Releases</li>
-    <li>
-      <a href="https://www.tidyverse.org/blog/2020/03/ggplot2-3-3-0/">Version 3.3.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2019/06/ggplot2-3-2-0/">Version 3.2.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/10/ggplot2-3-1-0/">Version 3.1.0</a>
-    </li>
-    <li>
-      <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">Version 3.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/11/14/ggplot2-2-2-0/">Version 2.2.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2016/03/03/ggplot2-2-1-0/">Version 2.1.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/12/21/ggplot2-2-0-0/">Version 2.0.0</a>
-    </li>
-    <li>
-      <a href="https://blog.rstudio.com/2015/01/09/ggplot2-updates/">Version 1.0.0</a>
-    </li>
-    <li class="divider"></li>
-    <li>
-      <a href="../news/index.html">Changelog</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/extending-ggplot2.html">Extending ggplot2</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-in-packages.html">Using ggplot2 in packages</a>
-    </li>
-    <li>
-      <a href="../articles/ggplot2-specs.html">Aesthetic specifications</a>
-    </li>
-    <li>
-      <a href="../articles/profiling.html">Profiling Performance</a>
-    </li>
-  </ul>
-</li>
+        
         <li>
   <a href="https://exts.ggplot2.tidyverse.org/gallery/">Extensions</a>
 </li>
 <li>
   <a href="https://github.com/tidyverse/ggplot2/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -205,20 +154,20 @@ geom_sf_text() and geom_sf_label() relies on this)." />
     <p><code>stat_sf_coordinates()</code> extracts the coordinates from 'sf' objects and
 summarises them to one pair of coordinates (x and y) per geometry. This is
 convenient when you draw an sf object as geoms like text and labels (so
-<code><a href='ggsf.html'>geom_sf_text()</a></code> and <code><a href='ggsf.html'>geom_sf_label()</a></code> relies on this).</p>
+<code><a href='CoordSf.html'>geom_sf_text()</a></code> and <code><a href='CoordSf.html'>geom_sf_label()</a></code> relies on this).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>stat_sf_coordinates</span>(
-  <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='aes.html'>aes</a></span>(),
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"point"</span>,
-  <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
-  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>inherit.aes</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>fun.geometry</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>stat_sf_coordinates</span><span class='op'>(</span>
+  mapping <span class='op'>=</span> <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  geom <span class='op'>=</span> <span class='st'>"point"</span>,
+  position <span class='op'>=</span> <span class='st'>"identity"</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  show.legend <span class='op'>=</span> <span class='cn'>NA</span>,
+  inherit.aes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  fun.geometry <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -292,21 +241,21 @@ to the paired geom/stat.</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>coordinates of an <code>sf</code> object can be retrieved by <code><a href='https://rdrr.io/pkg/sf/man/st_coordinates.html'>sf::st_coordinates()</a></code>.
-But, we cannot simply use <code><a href='https://rdrr.io/pkg/sf/man/st_coordinates.html'>sf::st_coordinates()</a></code> because, whereas text and
+    <p>coordinates of an <code>sf</code> object can be retrieved by <code><a href='https://r-spatial.github.io/sf/reference/st_coordinates.html'>sf::st_coordinates()</a></code>.
+But, we cannot simply use <code><a href='https://r-spatial.github.io/sf/reference/st_coordinates.html'>sf::st_coordinates()</a></code> because, whereas text and
 labels require exactly one coordinate per geometry, it returns multiple ones
 for a polygon or a line. Thus, these two steps are needed:</p><ol>
-<li><p>Choose one point per geometry by some function like <code><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>sf::st_centroid()</a></code>
-or <code><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>sf::st_point_on_surface()</a></code>.</p></li>
-<li><p>Retrieve coordinates from the points by <code><a href='https://rdrr.io/pkg/sf/man/st_coordinates.html'>sf::st_coordinates()</a></code>.</p></li>
+<li><p>Choose one point per geometry by some function like <code><a href='https://r-spatial.github.io/sf/reference/geos_unary.html'>sf::st_centroid()</a></code>
+or <code><a href='https://r-spatial.github.io/sf/reference/geos_unary.html'>sf::st_point_on_surface()</a></code>.</p></li>
+<li><p>Retrieve coordinates from the points by <code><a href='https://r-spatial.github.io/sf/reference/st_coordinates.html'>sf::st_coordinates()</a></code>.</p></li>
 </ol>
 
 <p>For the first step, you can use an arbitrary function via <code>fun.geometry</code>.
 By default, <code>function(x) sf::st_point_on_surface(sf::st_zm(x))</code> is used;
-<code><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>sf::st_point_on_surface()</a></code> seems more appropriate than <code><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>sf::st_centroid()</a></code>
+<code><a href='https://r-spatial.github.io/sf/reference/geos_unary.html'>sf::st_point_on_surface()</a></code> seems more appropriate than <code><a href='https://r-spatial.github.io/sf/reference/geos_unary.html'>sf::st_centroid()</a></code>
 since lables and text usually are intended to be put within the polygon or
-the line. <code><a href='https://rdrr.io/pkg/sf/man/st_zm.html'>sf::st_zm()</a></code> is needed to drop Z and M dimension beforehand,
-otherwise <code><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>sf::st_point_on_surface()</a></code> may fail when the geometries have M
+the line. <code><a href='https://r-spatial.github.io/sf/reference/st_zm.html'>sf::st_zm()</a></code> is needed to drop Z and M dimension beforehand,
+otherwise <code><a href='https://r-spatial.github.io/sf/reference/geos_unary.html'>sf::st_point_on_surface()</a></code> may fail when the geometries have M
 dimension.</p>
     <h2 class="hasAnchor" id="computed-variables"><a class="anchor" href="#computed-variables"></a>Computed variables</h2>
 
@@ -320,27 +269,28 @@ dimension.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"sf"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-<span class='no'>nc</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_read.html'>st_read</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"shape/nc.shp"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sf"</span>))
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"sf"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>nc</span> <span class='op'>&lt;-</span> <span class='fu'>sf</span><span class='fu'>::</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"shape/nc.shp"</span>, package<span class='op'>=</span><span class='st'>"sf"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>nc</span>) +
-  <span class='fu'>stat_sf_coordinates</span>()
+<span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>nc</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>stat_sf_coordinates</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'><a href='ggplot.html'>ggplot</a></span>(<span class='no'>nc</span>) +
-  <span class='fu'><a href='geom_errorbarh.html'>geom_errorbarh</a></span>(
-    <span class='fu'><a href='aes.html'>aes</a></span>(<span class='kw'>geometry</span> <span class='kw'>=</span> <span class='no'>geometry</span>,
-        <span class='kw'>xmin</span> <span class='kw'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span>(<span class='no'>x</span>) - <span class='fl'>0.1</span>,
-        <span class='kw'>xmax</span> <span class='kw'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span>(<span class='no'>x</span>) + <span class='fl'>0.1</span>,
-        <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span>(<span class='no'>y</span>),
-        <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>0.04</span>),
-    <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"sf_coordinates"</span>
-  )
-}</div><div class='output co'>#&gt; Reading layer `nc' from data source `/Users/runner/runners/2.262.1/work/_temp/Library/sf/shape/nc.shp' using driver `ESRI Shapefile'
+<span class='fu'><a href='ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>nc</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='geom_errorbarh.html'>geom_errorbarh</a></span><span class='op'>(</span>
+    <span class='fu'><a href='aes.html'>aes</a></span><span class='op'>(</span>geometry <span class='op'>=</span> <span class='va'>geometry</span>,
+        xmin <span class='op'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>0.1</span>,
+        xmax <span class='op'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0.1</span>,
+        y <span class='op'>=</span> <span class='fu'><a href='aes_eval.html'>after_stat</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span>,
+        height <span class='op'>=</span> <span class='fl'>0.04</span><span class='op'>)</span>,
+    stat <span class='op'>=</span> <span class='st'>"sf_coordinates"</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; Reading layer `nc' from data source `/Users/runner/work/_temp/Library/sf/shape/nc.shp' using driver `ESRI Shapefile'
 #&gt; Simple feature collection with 100 features and 14 fields
-#&gt; geometry type:  MULTIPOLYGON
-#&gt; dimension:      XY
-#&gt; bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
-#&gt; CRS:            4267</div><div class='output co'>#&gt; <span class='warning'>Warning: st_point_on_surface may not give correct results for longitude/latitude data</span></div><div class='img'><img src='stat_sf_coordinates-1.png' alt='' width='700' height='433' /></div><div class='input'>
+#&gt; Geometry type: MULTIPOLYGON
+#&gt; Dimension:     XY
+#&gt; Bounding box:  xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
+#&gt; Geodetic CRS:  NAD27</div><div class='output co'>#&gt; <span class='warning'>Warning: st_point_on_surface may not give correct results for longitude/latitude data</span></div><div class='img'><img src='stat_sf_coordinates-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -353,12 +303,12 @@ dimension.</p>
 
       <footer>
       <div class="tidyverse">
-  <p>ggplot2 is a part of the <strong>tidyverse</strong>, an ecosystem of packages designed with common APIs and a shared philosophy. Learn more at <a href="https://tidyverse.org">tidyverse.org</a>.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://github.com/wch" class="external-link">Winston Chang</a>, <a href="https://github.com/lionel-" class="external-link">Lionel Henry</a>, <a href="https://data-imaginist.com" class="external-link">Thomas Lin Pedersen</a>, Kohske Takahashi, <a href="https://clauswilke.com" class="external-link">Claus Wilke</a>, <a href="https://karawoo.com" class="external-link">Kara Woo</a>, <a href="https://yutani.rbind.io" class="external-link">Hiroaki Yutani</a>, <a href="https://fishandwhistle.net" class="external-link">Dewey Dunnington</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.</p>,<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
 <div class="author">
   <p>
-    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src='https://www.tidyverse.org/rstudio-logo.svg' alt='RStudio' height='24' /></a>.
+    Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='https://github.com/wch'>Winston Chang</a>, <a href='https://github.com/lionel-'>Lionel Henry</a>, <a href='https://data-imaginist.com'>Thomas Lin Pedersen</a>, Kohske Takahashi, <a href='https://clauswilke.com'>Claus Wilke</a>, <a href='https://karawoo.com'>Kara Woo</a>, <a href='https://yutani.rbind.io'>Hiroaki Yutani</a>, <a href='https://fishandwhistle.net'>Dewey Dunnington</a>, <a href='https://www.rstudio.com'><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" height="24"></a>.
     Site built by <a href="https://pkgdown.r-lib.org">pkgdown</a>.
   </p>
 </div>
@@ -385,6 +335,8 @@ dimension.</p>
 </script>
 
 
+
+  
 
   </body>
 </html>
